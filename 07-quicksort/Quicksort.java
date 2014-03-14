@@ -49,9 +49,55 @@ public class Quicksort {
 	return L;
     }
     
+    public static int[] qsort2 (int [] a){
+	//	int index = partition (a, 0,a.length);
+	//	qsort2 (a, 0,index-1);
+	//	qsort2 (a, index +1, a.length);
+	partition (a, 0, a.length-1);
+
+
+	return a;
+	
+    }
+
+    public static int partition (int [] a, int L, int R){
+	if ((R-L) <=0){
+	    return L;
+	}
+	if ((R-L) <=1){
+	    if (a[R] < a[L]){
+		int h = a[R];
+		a[R] = a[L];
+		a[L] = h;
+	    }
+	    return L;
+	}
+	int pivotindex = (int)((R-L+1)/2);
+	int pivot = a[pivotindex];
+	int temp = a[R];
+	a[R] = pivot;
+	a[pivotindex] = temp;
+	int wall = L;
+	for (int i = L; i < R; i++){
+	    if (a[i] < pivot){
+		temp = a[wall];
+		a[wall] = a[i];
+		a[i] = temp;
+		wall= wall +1;
+	    }
+	}
+	temp = a[wall];
+	a[wall] = pivot;
+	a[R] = temp;
+	partition (a, L, wall-1);
+	//	partition (a, wall+1,R);
+	return wall;
+    }
+    
     public static void main (String [] args){
 	int[] stuff = {9,7,6,8,2,7,8,4,7,1,0};
-
+	int[] stuff2 = {9,7,6,8,2,7,8,4,7,1,0};
 	System.out.println(Arrays.toString(qsort(stuff)));
+	System.out.println(Arrays.toString(qsort2(stuff2)));
     }
 }
