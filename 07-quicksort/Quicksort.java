@@ -50,12 +50,8 @@ public class Quicksort {
     }
     
     public static int[] qsort2 (int [] a){
-	//	int index = partition (a, 0,a.length);
-	//	qsort2 (a, 0,index-1);
-	//	qsort2 (a, index +1, a.length);
+
 	partition (a, 0, a.length-1);
-
-
 	return a;
 	
     }
@@ -72,7 +68,7 @@ public class Quicksort {
 	    }
 	    return L;
 	}
-	int pivotindex = (int)((R-L+1)/2);
+	int pivotindex = (int)(((R-L+1)/2) +L);
 	int pivot = a[pivotindex];
 	int temp = a[R];
 	a[R] = pivot;
@@ -90,7 +86,7 @@ public class Quicksort {
 	a[wall] = pivot;
 	a[R] = temp;
 	partition (a, L, wall-1);
-	//	partition (a, wall+1,R);
+	partition (a, wall+1,R);
 	return wall;
     }
     
