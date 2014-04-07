@@ -1,7 +1,6 @@
 //Alexander Ioustous
 //Kenny Zheng
 
-
 public class DoubleLL<E> {
    
     private class Node<E> {
