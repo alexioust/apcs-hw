@@ -5,7 +5,7 @@ public class RPN {
     
     private static MyStack stack = new MyStack();
     
-    public static int calculate (String s){
+    public static double calculate (String s){
 	String popvalue = "";
 	for (int i = 0; i < s.length(); i++){
 	    if (s.substring(i,i+1).equals ("+")){
@@ -30,39 +30,40 @@ public class RPN {
 	    if (!(s.substring(i,i+1).equals (" "))){
 		popvalue = popvalue + s.charAt(i);
 	    }
-
+	    
 	}
 	return stack.pop();
     }
     
 
     public static void add (){
-	int temp1 = stack.pop();
-	int temp2 = stack.pop();
-	int temp3 = temp1 + temp2;
+	double temp1 = stack.pop();
+	double temp2 = stack.pop();
+	double temp3 = temp1 + temp2;
 	stack.push(temp3);
     }
     public static void subt (){
-	int temp2 = stack.pop();
-	int temp1 = stack.pop();
-	int temp3 = temp1 - temp2;
+	double temp2 = stack.pop();
+	double temp1 = stack.pop();
+	double temp3 = temp1 - temp2;
 	stack.push(temp3);
     }
     public static void mult (){
-	int temp1 = stack.pop();
-	int temp2 = stack.pop();
-	int temp3 = temp1 * temp2;
+	double temp1 = stack.pop();
+	double temp2 = stack.pop();
+	double temp3 = temp1 * temp2;
 	stack.push(temp3);
     }
     public static void div (){
-	int temp2 = stack.pop();
-	int temp1 = stack.pop();
-	int temp3 = temp1/temp2;
+	double temp2 = stack.pop();
+	double temp1 = stack.pop();
+	double temp3 = temp1/temp2;
 	stack.push(temp3);
     }
 
     public static void main (String [] args){
 	System.out.println (calculate("1 2 3 4 + * +"));
+	System.out.println (calculate ("4 5 5 6 * + - 4 /"));
     }
 	
 }

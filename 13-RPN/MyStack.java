@@ -1,14 +1,14 @@
 public class MyStack {
     // private Node top;
-    private int[] stack;
+    private double[] stack;
     private int numElts;
 
     public MyStack (){
-	stack = new int[10];
+	stack = new double[10];
 	numElts = 0;
     }
     
-    public void push (int s){
+    public void push (double s){
 	//Node n = new Node(s);
 	//	n.setNext(top);
 	//	top = n;
@@ -20,24 +20,29 @@ public class MyStack {
     }
 
     public void increase(){
-	int [] temp = new int[stack.length];
+	double [] temp = new double[stack.length];
 	int tempsize = stack.length;
 	for (int i = 0; i < stack.length; i++){
 	    temp [i] = stack[i];
 	}
-	stack = new int[temp.length*2];
+	stack = new double[temp.length*2];
 	for (int i = 0; i < temp.length; i++){
 	    stack[i] = temp[i];
 	}	    
     }
 
-    public int pop(){
-	int ret = stack[numElts-1];
+    public double pop(){
+	if (numElts <=0){
+	    System.out.println("Stack is empty");
+	    return -1;
+	}
+
+	double ret = stack[numElts-1];
 	numElts = numElts -1;
 	return ret;
     }
 
-    public int peek (){
+    public double peek (){
 	return stack[numElts -1];
     }
 
